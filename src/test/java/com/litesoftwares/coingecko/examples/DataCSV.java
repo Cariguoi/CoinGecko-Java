@@ -1,30 +1,28 @@
-import java.io.File;
+import java.io.FileWriter;
+import java.util.Arrays;
 
 public class DataCSV {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		// 1 Chercher un fichier CSV
-		
-		private final static String FILE_NAME = "src/test/resources/test.csv";
+    public static void main(String[]args) throws Exception {
 
-		@Test
-		public void testGetResource() {
-		    // Param
-		    final String fileName = FILE_NAME;
+        String csvFile = "D:/workspace/CoinGecko/src/test.csv";
+        FileWriter writer = new FileWriter(csvFile);
 
-		    // Result
-		    // ...
+        writeToCsvFile.writeLine(writer, Arrays.asList("a", "b", "c", "d"));
 
-		    // Appel
-		    final File file = CsvFileHelper.getResource(fileName);
+       //custom separator + quote
+        writeToCsvFile.writeLine(writer, Arrays.asList("aaa", "bb,b", "cc,c"), ',', '"');
 
-		    // Test
-		    // On sait que le fichier existe bien puisque c'est avec lui qu'on travaille depuis le début.
-		    assertTrue(file.exists());
-		}
-		
-	}
+       //custom separator + quote
+        writeToCsvFile.writeLine(writer, Arrays.asList("aaa", "bbb", "cc,c"), '|', '\'');
+
+       //double-quotes
+        writeToCsvFile.writeLine(writer, Arrays.asList("aaa", "bbb", "cc\"c"));
+
+
+        writer.flush();
+        writer.close();
+
+    }
 
 }
