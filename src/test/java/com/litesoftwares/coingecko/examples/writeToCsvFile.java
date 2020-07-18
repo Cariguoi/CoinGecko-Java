@@ -4,7 +4,7 @@ import java.util.List;
 
 public class writeToCsvFile {
 
-    private static final char DEFAULT__SEPARATOR = ',';
+    private static final char DEFAULT__SEPARATOR = ';';
 
     public static void writeLine(Writer w, List<String> values) throws IOException {
         writeLine(w, values, DEFAULT__SEPARATOR, ' ');
